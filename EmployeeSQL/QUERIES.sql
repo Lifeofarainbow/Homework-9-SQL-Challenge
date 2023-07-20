@@ -17,30 +17,30 @@ ORDER BY hire_date;
 -- 3. List the manager of each department along with their department number, 
 --department name, employee number, last name, and first name.
 
-SELECT  d_m.dept_no, d.dept_name, d_m.emp_no, e.last_name, e.first_name
+SELECT  dm.dept_no, d.dept_name, dm.emp_no, e.last_name, e.first_name
 FROM employees AS e
-JOIN dept_manager AS d_m
-ON e.emp_no = d_m.emp_no
+JOIN dept_manager AS dm
+ON e.emp_no = dm.emp_no
 JOIN departments AS d
-ON d_m.dept_no = d.dept_no;
+ON dm.dept_no = d.dept_no;
 
 -- 4. List the department number for each employee along with that 
 --employee’s employee number, last name, first name, and department name.
 
-SELECT d_e.dept_no, e.emp_no, e.last_name, e.first_name, d.dept_name
+SELECT de.dept_no, e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees AS e
-LEFT JOIN dept_emp AS d_e
-ON e.emp_no = d_e.emp_no
+LEFT JOIN dept_emp AS de
+ON e.emp_no = de.emp_no
 LEFT JOIN departments AS d
-ON d.dept_no = d_e.dept_no;
+ON d.dept_no = de.dept_no;
 
 -- 5. List first name, last name, and sex of each employee whose first name is 
 --Hercules and whose last name begins with the letter B.
 
-SELECT e.first_name, e.last_name, e.sex
-FROM employees AS e 
-WHERE  e.first_name = 'Hercules' AND 
-e.last_name LIKE 'B%';
+SELECT first_name, last_name, sex
+FROM employees
+WHERE  first_name = 'Hercules' AND 
+last_name LIKE 'B%';
 
 --6. List each employee in the Sales department, including their employee number, 
 --last name, and first name.
